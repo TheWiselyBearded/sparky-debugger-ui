@@ -39,7 +39,7 @@ def create_message(thread, content, file):
 
 def create_run(thread):
     run = client.beta.threads.runs.create(
-        thread_id=thread.id, assistant_id=assistant_id, instructions=instructions
+        thread_id=thread.id, assistant_id=assistant_id
     )
     return run
 
