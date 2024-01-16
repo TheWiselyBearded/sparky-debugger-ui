@@ -9,12 +9,11 @@ import openai
 from openai.types.beta.threads import MessageContentImageFile
 from tools import TOOL_MAP
 
-api_key = "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"
+api_key = os.environ.get("OPENAI_API_KEY")
 client = openai.OpenAI(api_key=api_key)
 assistant_id = "asst_EFGgVsqi0N185JROtg2VGKWC"
-instructions = "" #"RUN_INSTRUCTIONS"
-assistant_title = "dsl-sparky"
-enabled_file_upload_message = False #os.environ.get("ENABLED_FILE_UPLOAD_MESSAGE", "Upload a file")
+assistant_title = "dsl-sparky-gpt-ui"
+enabled_file_upload_message = False
 
 
 def create_thread(content, file):
