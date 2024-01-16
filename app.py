@@ -9,13 +9,6 @@ import openai
 from openai.types.beta.threads import MessageContentImageFile
 from tools import TOOL_MAP
 
-# api_key = os.environ.get("OPENAI_API_KEY")
-# client = openai.OpenAI(api_key=api_key)
-# assistant_id = os.environ.get("ASSISTANT_ID")
-# instructions = os.environ.get("RUN_INSTRUCTIONS", "")
-# assistant_title = os.environ.get("ASSISTANT_TITLE", "Assistants API UI")
-# enabled_file_upload_message = os.environ.get("ENABLED_FILE_UPLOAD_MESSAGE", "Upload a file")
-
 api_key = "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"
 client = openai.OpenAI(api_key=api_key)
 assistant_id = "asst_EFGgVsqi0N185JROtg2VGKWC"
