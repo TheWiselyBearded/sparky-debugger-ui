@@ -12,7 +12,7 @@ from tools import TOOL_MAP
 api_key = os.environ.get("OPENAI_API_KEY")
 client = openai.OpenAI(api_key=api_key)
 assistant_id = os.environ.get("ASSISTANT_ID")
-assistant_title = os.environ.get("ASSISTANT_TITLE", "Assistants API UI")
+assistant_title = os.environ.get("ASSISTANT_TITLE", "Sparky DSL Assistant API UI")
 instructions=""
 
 def create_thread(content, file):
