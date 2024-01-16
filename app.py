@@ -11,7 +11,8 @@ from tools import TOOL_MAP
 
 api_key = os.environ.get("OPENAI_API_KEY")
 client = openai.OpenAI(api_key=api_key)
-assistant_id = os.environ.get("ASSISTANT_ID")
+assistant_id_env = os.environ.get("ASSISTANT_ID")
+assistant_id = assistant_id_env
 assistant_title = os.environ.get("ASSISTANT_TITLE", "Sparky DSL Assistant API UI")
 instructions=""
 
