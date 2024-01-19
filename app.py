@@ -11,8 +11,8 @@ from tools import TOOL_MAP
 
 api_key = os.environ.get("OPENAI_API_KEY")
 client = openai.OpenAI(api_key=api_key)
-assistant_id = "asst_LzblKyPPhziumiF4JIUzPXfL"
-assistant_title = os.environ.get("ASSISTANT_TITLE", "Sparky DSL Assistant GPT3 UI")
+assistant_id = "asst_FZVUka1PIysQNT0JRHg6pxWc"
+assistant_title = os.environ.get("ASSISTANT_TITLE", "Sparky DSL Assistant GPT4 UI")
 instructions=""
 
 def create_thread(content, file):
