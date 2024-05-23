@@ -6,13 +6,6 @@ COPY pyproject.toml poetry.lock ./
 RUN apt update && \
     apt -y upgrade && \
     apt install -y ffmpeg && \
-    apt install -y curl && \
-    apt install sudo && \
-    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && \
-    apt install -y nodejs &&\
-    export PATH=./node_modules/.bin:$PATH && \
-    npm install @digital-go-jp/abr-geocoder && \
-    abrg download && \
     pip3 install --upgrade pip && \
     pip3 install poetry && \
     poetry config virtualenvs.create false && \
