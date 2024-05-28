@@ -9,9 +9,13 @@ import openai
 from openai import AssistantEventHandler
 from tools import TOOL_MAP
 from typing_extensions import override
-from dotenv import load_dotenv
 
-load_dotenv()
+# Attempt to load environment variables from a .env file if it exists
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 azure_openai_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT")
 azure_openai_key = os.environ.get("AZURE_OPENAI_KEY")
