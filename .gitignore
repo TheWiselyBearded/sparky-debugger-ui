@@ -5,3 +5,6 @@ files/*
 __pycache__
 /.idea
 .python-version
+*.sln
+*.vcproj
+*.vcxproj
