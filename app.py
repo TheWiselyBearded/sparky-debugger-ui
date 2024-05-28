@@ -1,3 +1,4 @@
+from streamlit import selectbox
 import os
 import base64
 import re
@@ -8,7 +9,9 @@ import openai
 from openai import AssistantEventHandler
 from tools import TOOL_MAP
 from typing_extensions import override
+from dotenv import load_dotenv
 
+load_dotenv()
 
 azure_openai_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT")
 azure_openai_key = os.environ.get("AZURE_OPENAI_KEY")
@@ -188,7 +191,6 @@ def format_annotation(text):
     text_value += "\n\n" + "\n".join(citations)
     return text_value
 
-
 def run_stream(user_input, file):
     if "thread" not in st.session_state:
         st.session_state.thread = create_thread(user_input, file)
@@ -199,6 +201,7 @@ def run_stream(user_input, file):
         event_handler=EventHandler(),
     ) as stream:
         stream.until_done()
+
 
 
 def handle_uploaded_file(uploaded_file):
@@ -228,6 +231,10 @@ def disable_form():
 
 def main():
     st.title(assistant_title)
+    
+    # Add a dropdown to select the mode with a unique key
+    mode = st.selectbox("Select Mode", ["developer", "quick"], key="mode_selectbox")
+    
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
     )
@@ -250,6 +257,7 @@ def main():
         )
     else:
         uploaded_file = None
+
     if user_msg:
         render_chat()
         with st.chat_message("user"):
@@ -258,12 +266,15 @@ def main():
         file = None
         if uploaded_file is not None:
             file = handle_uploaded_file(uploaded_file)
-        run_stream(user_msg, file)
+        
+        # Create the formatted JSON with the mode and query
+        formatted_input = json.dumps({"mode": mode, "query": user_msg})
+        
+        run_stream(formatted_input, file)
         st.session_state.in_progress = False
         st.session_state.tool_call = None
         st.rerun()
     render_chat()
-
 
 if __name__ == "__main__":
     main()
